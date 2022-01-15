@@ -20,14 +20,14 @@
         theme: 'lightMode',
         themeIcon: '🌙',
         themeToggle() {
-            if (this.theme === 'darkMode') {
-                this.theme = 'lightMode';
-                this.themeIcon = '🌙';
-                this.logoSrc = './assets/x-pense-logo.svg';
-            } else {
+            if (this.theme === 'lightMode') {
                 this.theme = 'darkMode';
                 this.themeIcon = '☀️';
                 this.logoSrc = './assets/x-pense-logo-dark.svg';
+            } else {
+                this.theme = 'lightMode';
+                this.themeIcon = '🌙';
+                this.logoSrc = './assets/x-pense-logo.svg';
             }
         }
     }"
