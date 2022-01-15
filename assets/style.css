@@ -29,3 +29,7 @@ body.lightMode {
     --color-text: #000;
     --color-text-secondary: #999;
 }
+
+#color-toggle {
+    text-decoration: none;
+}
