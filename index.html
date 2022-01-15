@@ -16,26 +16,38 @@
 </head>
 
 <body x-data="{
+        logoSrc: './assets/x-pense-logo.svg',
         theme: 'lightMode',
-        isDark() {
-            return this.theme === 'darkMode';
+        themeIcon: '🌙',
+        themeToggle() {
+            if (this.theme === 'darkMode') {
+                this.theme = 'lightMode';
+                this.themeIcon = '🌙';
+                this.logoSrc = './assets/x-pense-logo.svg';
+            } else {
+                this.theme = 'darkMode';
+                this.themeIcon = '☀️';
+                this.logoSrc = './assets/x-pense-logo-dark.svg';
+            }
         }
     }"
     :class="theme">
     <header>
         <nav>
             <a href="https://xpense.cybar.dev/">
-                <img :src="isDark() ? './assets/x-pense-logo-dark.svg' : './assets/x-pense-logo.svg'" alt="small X-pense logo" height="48px">
+                <img :src="logoSrc" alt="small X-pense logo" height="48px">
             </a>
             <ul>
                 <li><a href="#"
-                    @click="theme = isDark() ? 'lightMode' : 'darkMode'"
-                    x-text="isDark() ? '☀️' : '🌙'"></a>
+                    @click="themeToggle()"
+                    x-text="themeIcon"></a>
                 </li>
-                <li><a href="https://github.com/cybardev/xpense/" target="_blank">GitHub &nearr;</a></li>
+                <li><a href="https://github.com/cybardev/xpense/"
+                    target="_blank">GitHub &nearr;</a>
+                </li>
             </ul>
         </nav>
-        <img :src="isDark() ? './assets/x-pense-logo-dark.svg' : './assets/x-pense-logo.svg'" alt="big X-pense logo" height="76px">
+        <img :src="logoSrc" alt="big X-pense logo" height="76px">
         <h1>Monthly Expense Calculator</h1>
     </header>
     <main>
