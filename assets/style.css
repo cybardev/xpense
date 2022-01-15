@@ -30,9 +30,9 @@ body.lightMode {
     --color-text-secondary: #999;
 }
 
-#color-toggle:link,
-#color-toggle:visited,
-#color-toggle:hover,
-#color-toggle:active, {
+#color-toggle:link
+#color-toggle:visited
+#color-toggle:hover
+#color-toggle:active {
     text-decoration: none;
 }
