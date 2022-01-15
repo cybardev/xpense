@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body.darkMode {
     --color: #0097fc;
     --color-accent: #0097fc4f;
