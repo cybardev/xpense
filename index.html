@@ -53,6 +53,11 @@
             totalAmt: 0,
         }">
         <!-- TODO: add content -->
+        <div style="text-align: center;">
+            <p>Total: <span x-text="totalAmt"></span></p>
+            <button @click="totalAmt++">Add 1</button>
+            <button @click="totalAmt = 0">Clear</button>
+        </div>
     </main>
     <footer>
         <hr>
