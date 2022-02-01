@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <link
+            rel="icon"
+            type="image/png"
+            x-ref="favicon"
+            href="./assets/x-pense-icon-dark.svg"
+        />
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+        <link rel="stylesheet" href="./assets/style.css" />
 
-<head>
-    <link rel="icon" type="image/png" x-ref="favicon" href="./assets/x-pense-icon-dark.svg">
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
-    <link rel="stylesheet" href="./assets/style.css">
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="A simple monthly expense calculator to use for personal budgeting."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta charset="utf-8">
-    <meta name="description" content="A simple monthly expense calculator to use for personal budgeting.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>X-pense - Monthly Expense Calculator</title>
 
-    <title>X-pense - Monthly Expense Calculator</title>
+        <script
+            defer
+            src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <script defer src="./assets/script.js"></script>
+    </head>
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-
-<body x-data="{
+    <body
+        x-data="{
         logoSrc: './assets/x-pense-logo.svg',
         theme: 'lightMode',
         themeIcon: '🌙',
@@ -31,43 +43,84 @@
             }
         }
     }"
-    :class="theme">
-    <header>
-        <nav>
-            <a href="https://xpense.cybar.dev/">
-                <img :src="logoSrc" alt="small X-pense logo" height="48px">
-            </a>
-            <ul>
-                <li><a href="#" id="color-toggle"
-                @click="themeToggle()" x-text="themeIcon"></a>
-                </li>
-                <li><a href="https://github.com/cybardev/xpense/"
-                    target="_blank">GitHub &nearr;</a>
-                </li>
-            </ul>
-        </nav>
-        <img :src="logoSrc" alt="big X-pense logo" height="76px">
-        <h1>Monthly Expense Calculator</h1>
-    </header>
-    <main x-data="{
+        :class="theme"
+    >
+        <header>
+            <nav>
+                <a href="https://xpense.cybar.dev/">
+                    <img
+                        :src="logoSrc"
+                        alt="small X-pense logo"
+                        height="48px"
+                    />
+                </a>
+                <ul>
+                    <li>
+                        <a
+                            href="#"
+                            id="color-toggle"
+                            @click="themeToggle()"
+                            x-text="themeIcon"
+                        ></a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://github.com/cybardev/xpense/"
+                            target="_blank"
+                            >GitHub &nearr;</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+            <img :src="logoSrc" alt="big X-pense logo" height="76px" />
+            <h1>Monthly Expense Calculator</h1>
+        </header>
+        <main
+            x-data="{
             totalAmt: 0,
-        }">
-        <!-- TODO: add content -->
-        <div style="text-align: center;">
-            <h2>Total: <span x-text="totalAmt"></span></h2>
-            <button @click="totalAmt++">Add 1</button>
-            <button @click="totalAmt = 0">Clear</button>
-        </div>
-    </main>
-    <footer>
-        <hr />
-        <p>
-            Made by <a href="https://github.com/cybardev/"
-            target="_blank">Sheikh &nearr;</a><br>
-        </p>
-    </footer>
-
-    <script src="./assets/script.js"></script>
-</body>
-
+        }"
+        >
+            <!-- TODO: add content -->
+            <div class="flexbox sp-b">
+                <button @click="totalAmt++">Add</button>
+                <h2>Total Monthly Expense: <span x-text="totalAmt"></span></h2>
+                <button @click="totalAmt = 0">Remove</button>
+            </div>
+            <div class="flexbox sp-b m-v">
+                <span class="flexbox sp-a">
+                    <label for="new-fieldname"><p>Expense:</p></label>
+                    <input
+                        type="text"
+                        name="new-item"
+                        id="new-fieldname"
+                        class="m-h"
+                /></span>
+                <span class="flexbox sp-a">
+                    <label for="new-fieldname"><p>Quantity:</p></label>
+                    <input
+                        type="text"
+                        name="new-item"
+                        id="new-quantity"
+                        class="m-h"
+                /></span>
+                <span class="flexbox sp-a">
+                    <label for="new-fieldname"><p>Cost:</p></label>
+                    <input
+                        type="text"
+                        name="new-item"
+                        id="new-cost"
+                        class="m-h"
+                /></span>
+            </div>
+        </main>
+        <footer>
+            <hr />
+            <p>
+                Made by
+                <a href="https://github.com/cybardev/" target="_blank"
+                    >Sheikh &nearr;</a
+                ><br />
+            </p>
+        </footer>
+    </body>
 </html>

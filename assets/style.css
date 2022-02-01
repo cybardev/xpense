@@ -1,3 +1,7 @@
+:root {
+    --space-px: 20px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -28,6 +32,28 @@ body.lightMode {
     --color-table: #118bee;
     --color-text: #000;
     --color-text-secondary: #999;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.sp-a {
+    justify-content: space-around;
+}
+
+.sp-b {
+    justify-content: space-between;
+}
+
+.m-v {
+    margin-top: var(--space-px);
+    margin-bottom: var(--space-px);
+}
+
+.m-h {
+    margin-left: var(--space-px);
+    margin-right: var(--space-px);
 }
 
 #color-toggle,
