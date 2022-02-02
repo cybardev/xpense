@@ -23,28 +23,10 @@
             defer
             src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
-        <script defer src="./assets/script.js"></script>
+        <script src="./assets/script.js"></script>
     </head>
 
-    <body
-        x-data="{
-        logoSrc: './assets/x-pense-logo.svg',
-        theme: 'lightMode',
-        themeIcon: '🌙',
-        themeToggle() {
-            if (this.theme === 'lightMode') {
-                this.theme = 'darkMode';
-                this.themeIcon = '☀️';
-                this.logoSrc = './assets/x-pense-logo-dark.svg';
-            } else {
-                this.theme = 'lightMode';
-                this.themeIcon = '🌙';
-                this.logoSrc = './assets/x-pense-logo.svg';
-            }
-        }
-    }"
-        :class="theme"
-    >
+    <body x-data="themeData" :class="theme">
         <header>
             <nav>
                 <a href="https://xpense.cybar.dev/">
@@ -75,46 +57,86 @@
             <img :src="logoSrc" alt="big X-pense logo" height="76px" />
             <h1>Monthly Expense Calculator</h1>
         </header>
-        <main
-            x-data="{
-            totalAmt: 0,
-        }"
-        >
-            <!-- TODO: add content -->
-            <div class="flexbox sp-b">
-                <button @click="totalAmt++">Add</button>
-                <h2>Total Monthly Expense: <span x-text="totalAmt"></span></h2>
-                <button @click="totalAmt = 0">Remove</button>
+        <hr />
+        <main x-data="staticData">
+            <div>
+                <section class="flex sp-b">
+                    <button @click="staticData.addExpense()">Add</button>
+                    <h2>
+                        Total Monthly Expense:
+                        <span x-text="staticData.totalAmt()"></span>
+                    </h2>
+                    <button @click="staticData.delExpense()">Remove</button>
+                </section>
+                <section class="flex sp-b m-v">
+                    <span class="flex sp-a">
+                        <label for="new-item">Expense:</label>
+                        <input
+                            type="text"
+                            name="new-item"
+                            id="new-item"
+                            class="m-h"
+                            placeholder="name"
+                    /></span>
+                    <span class="flex sp-a">
+                        <label for="new-quantity">Quantity:</label>
+                        <input
+                            type="number"
+                            name="new-item"
+                            id="new-quantity"
+                            class="m-h"
+                            placeholder="0"
+                    /></span>
+                    <span class="flex sp-a">
+                        <label for="new-cost">Unit Cost ($):</label>
+                        <input
+                            type="number"
+                            name="new-item"
+                            id="new-cost"
+                            class="m-h"
+                            placeholder="0.00"
+                    /></span>
+                </section>
             </div>
-            <div class="flexbox sp-b m-v">
-                <span class="flexbox sp-a">
-                    <label for="new-fieldname"><p>Expense:</p></label>
-                    <input
-                        type="text"
-                        name="new-item"
-                        id="new-fieldname"
-                        class="m-h"
-                /></span>
-                <span class="flexbox sp-a">
-                    <label for="new-fieldname"><p>Quantity:</p></label>
-                    <input
-                        type="text"
-                        name="new-item"
-                        id="new-quantity"
-                        class="m-h"
-                /></span>
-                <span class="flexbox sp-a">
-                    <label for="new-fieldname"><p>Cost:</p></label>
-                    <input
-                        type="text"
-                        name="new-item"
-                        id="new-cost"
-                        class="m-h"
-                /></span>
-            </div>
+            <br />
+            <section class="m-v">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expense</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                            <th>Net Cost</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="expense in staticData.expenses">
+                            <tr
+                                x-id="['expenseRow', 'expenseChk']"
+                                :id="$id('expenseRow')"
+                            >
+                                <td x-text="expense['item']"></td>
+                                <td x-text="expense['amt']"></td>
+                                <td x-text="'$' + expense['cost']"></td>
+                                <td
+                                    x-text="'$' + expense['amt'] * expense['cost']"
+                                ></td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        name="exp"
+                                        :id="$id('expenseChk')"
+                                    />
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </section>
         </main>
+        <hr />
         <footer>
-            <hr />
             <p>
                 Made by
                 <a href="https://github.com/cybardev/" target="_blank"

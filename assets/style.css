@@ -34,8 +34,17 @@ body.lightMode {
     --color-text-secondary: #999;
 }
 
-.flexbox {
+.flex {
     display: flex;
+}
+
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+    width: 100%;
 }
 
 .sp-a {
