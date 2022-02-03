@@ -22,7 +22,7 @@ let staticData = {
     totalAmt() {
         let amt = 0.0;
         this.expenses.forEach((exp) => {
-            amt += exp["cost"] * exp["amt"];
+            amt += exp.cost * exp.amt;
         });
         return amt.toFixed(2);
     },
