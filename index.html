@@ -120,7 +120,7 @@
                                 <td x-text="expense.amt"></td>
                                 <td x-text="'$' + expense.cost"></td>
                                 <td
-                                    x-text="'$' + expense.amt * expense.cost"
+                                    x-text="'$' + (expense.amt * expense.cost).toFixed(2)"
                                 ></td>
                                 <td>
                                     <input
