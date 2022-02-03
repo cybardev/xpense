@@ -58,15 +58,15 @@
             <h1>Monthly Expense Calculator</h1>
         </header>
         <hr />
-        <main x-data="{staticData}">
+        <main x-data="staticData">
             <div>
                 <section class="flex sp-b">
-                    <button @click="staticData.addExpense()">Add</button>
+                    <button @click="addExpense()">Add</button>
                     <h2>
                         Total Monthly Expense:
-                        <span x-text="staticData.totalAmt()"></span>
+                        <span x-text="totalAmt()"></span>
                     </h2>
-                    <button @click="staticData.delExpense()">Remove</button>
+                    <button @click="delExpense()">Remove</button>
                 </section>
                 <section class="flex sp-b m-v">
                     <span class="flex sp-a">
@@ -111,7 +111,7 @@
                         </tr>
                     </thead>
                     <tbody id="expense-list">
-                        <template x-for="expense in staticData.expenses">
+                        <template x-for="expense in expenses">
                             <tr
                                 x-id="['expenseRow', 'expenseChk']"
                                 :id="$id('expenseRow')"
