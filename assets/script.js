@@ -76,6 +76,7 @@ let staticData = {
                 item: name.value,
                 amt: parseInt(amount.value) || 0,
                 cost: parseFloat(unit_cost.value) || 0.0,
+                del: false,
             });
 
             name.value = "";
