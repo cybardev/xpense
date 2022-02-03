@@ -57,6 +57,6 @@ let staticData = {
     },
 
     delExpense() {
-        // TODO: delete selected intry from table
+        this.expenses.splice(); // TODO: get id of checked items and remove them from expenses
     },
 };
