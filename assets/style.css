@@ -1,5 +1,6 @@
 :root {
     --space-px: 20px;
+    --full-width: 100%;
 }
 
 html {
@@ -40,7 +41,7 @@ tbody,
 tr,
 th,
 td {
-    width: 100%;
+    width: var(--full-width);
 }
 
 .flex {
