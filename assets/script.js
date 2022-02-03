@@ -17,44 +17,7 @@ let themeData = {
 };
 
 let staticData = {
-    expenses: [
-        {
-            item: "Eg0",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Eg1",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Eg2",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Eg3",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Eg4",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Eg5",
-            amt: 10,
-            cost: 2.0,
-            del: false,
-        },
-    ],
+    expenses: [],
 
     totalAmt() {
         let amt = 0.0;
