@@ -34,10 +34,6 @@ body.lightMode {
     --color-text-secondary: #999;
 }
 
-.flex {
-    display: flex;
-}
-
 table,
 thead,
 tbody,
@@ -45,6 +41,10 @@ tr,
 th,
 td {
     width: 100%;
+}
+
+.flex {
+    display: flex;
 }
 
 .sp-a {

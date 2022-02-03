@@ -17,32 +17,7 @@ let themeData = {
 };
 
 let staticData = {
-    expenses: [
-        {
-            item: "Expense 1",
-            amt: 1,
-            cost: 2.0,
-            del: false,
-        },
-        {
-            item: "Expense 2",
-            amt: 3,
-            cost: 4.0,
-            del: false,
-        },
-        {
-            item: "Expense 3",
-            amt: 5,
-            cost: 6.0,
-            del: false,
-        },
-        {
-            item: "Expense 4",
-            amt: 7,
-            cost: 8.0,
-            del: false,
-        },
-    ],
+    expenses: [],
 
     totalAmt() {
         let amt = 0.0;
@@ -62,7 +37,7 @@ let staticData = {
 
     delExpense() {
         this.expenses.forEach((expense) => {
-            if (expense.del === true) {
+            if (expense.del) {
                 this.expenses.splice(this.expenses.indexOf(expense), 1);
             }
         });
