@@ -110,23 +110,24 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="expense-list">
                         <template x-for="expense in staticData.expenses">
                             <tr
                                 x-id="['expenseRow', 'expenseChk']"
                                 :id="$id('expenseRow')"
                             >
-                                <td x-text="expense['item']"></td>
-                                <td x-text="expense['amt']"></td>
-                                <td x-text="'$' + expense['cost']"></td>
+                                <td x-text="expense.item"></td>
+                                <td x-text="expense.amt"></td>
+                                <td x-text="'$' + expense.cost"></td>
                                 <td
-                                    x-text="'$' + expense['amt'] * expense['cost']"
+                                    x-text="'$' + expense.amt * expense.cost"
                                 ></td>
                                 <td>
                                     <input
                                         type="checkbox"
                                         name="exp"
                                         :id="$id('expenseChk')"
+                                        @click="expense.del = true"
                                     />
                                 </td>
                             </tr>
