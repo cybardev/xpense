@@ -17,7 +17,44 @@ let themeData = {
 };
 
 let staticData = {
-    expenses: [],
+    expenses: [
+        {
+            item: "Eg0",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+        {
+            item: "Eg1",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+        {
+            item: "Eg2",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+        {
+            item: "Eg3",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+        {
+            item: "Eg4",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+        {
+            item: "Eg5",
+            amt: 10,
+            cost: 2.0,
+            del: false,
+        },
+    ],
 
     totalAmt() {
         let amt = 0.0;
@@ -28,11 +65,23 @@ let staticData = {
     },
 
     addExpense() {
-        this.expenses.push({
-            item: document.getElementById("new-item").value,
-            amt: parseInt(document.getElementById("new-quantity").value),
-            cost: parseFloat(document.getElementById("new-cost").value),
-        });
+        let name = document.getElementById("new-item"),
+            amount = document.getElementById("new-quantity"),
+            unit_cost = document.getElementById("new-cost");
+
+        if (!name.value) {
+            alert("Please enter an item name.");
+        } else {
+            this.expenses.push({
+                item: name.value,
+                amt: parseInt(amount.value) || 0,
+                cost: parseFloat(unit_cost.value) || 0.0,
+            });
+
+            name.value = "";
+            amount.value = "";
+            unit_cost.value = "";
+        }
     },
 
     delExpense() {
