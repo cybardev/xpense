@@ -25,7 +25,6 @@
         ></script>
         <script src="./assets/script.js"></script>
     </head>
-
     <body x-data="themeData" :class="theme">
         <header>
             <nav>
@@ -41,7 +40,7 @@
                         <a
                             href="#"
                             id="color-toggle"
-                            @click="themeToggle()"
+                            @click="themeToggle"
                             x-text="themeIcon"
                         ></a>
                     </li>
@@ -61,12 +60,12 @@
         <main x-data="staticData">
             <div>
                 <section class="flex sp-b">
-                    <button @click="addExpense()">Add</button>
-                    <h2>
+                    <button @click="addExpense" id="addBtn">Add</button>
+                    <h2 id="sumAmt">
                         Total Monthly Expense:
-                        <span x-text="totalAmt()"></span>
+                        <span x-text="totalAmt"></span>
                     </h2>
-                    <button @click="delExpense()">Remove</button>
+                    <button @click="delExpense" id="delBtn">Remove</button>
                 </section>
                 <section class="flex sp-b m-v">
                     <span class="flex sp-a">

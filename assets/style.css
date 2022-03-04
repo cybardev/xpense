@@ -73,3 +73,17 @@ td {
 #color-toggle:active {
     text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+    #sumAmt {
+        order: 1;
+    }
+
+    #addBtn {
+        order: 2;
+    }
+
+    #delBtn {
+        order: 3;
+    }
+}

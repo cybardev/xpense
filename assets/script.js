@@ -1,4 +1,6 @@
 // @ts-nocheck
+const $ = (id) => document.getElementById(id);
+
 let themeData = {
     logoSrc: "./assets/x-pense-logo.svg",
     theme: "lightMode",
@@ -21,16 +23,14 @@ let staticData = {
 
     totalAmt() {
         let amt = 0.0;
-        this.expenses.forEach((exp) => {
-            amt += exp.cost * exp.amt;
-        });
+        this.expenses.forEach((exp) => (amt += exp.cost * exp.amt));
         return amt.toFixed(2);
     },
 
     addExpense() {
-        let name = document.getElementById("new-item"),
-            amount = document.getElementById("new-quantity"),
-            unit_cost = document.getElementById("new-cost");
+        let name = $("new-item"),
+            amount = $("new-quantity"),
+            unit_cost = $("new-cost");
 
         if (!name.value) {
             alert("Please enter an item name.");
