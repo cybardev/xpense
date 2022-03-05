@@ -1,5 +1,5 @@
 // @ts-nocheck
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.querySelector(id);
 
 let themeData = {
     logoSrc: "./assets/x-pense-logo.svg",
@@ -28,9 +28,9 @@ let staticData = {
     },
 
     addExpense() {
-        let name = $("new-item"),
-            amount = $("new-quantity"),
-            unit_cost = $("new-cost");
+        let name = $("#new-item"),
+            amount = $("#new-quantity"),
+            unit_cost = $("#new-cost");
 
         if (!name.value) {
             alert("Please enter an item name.");
