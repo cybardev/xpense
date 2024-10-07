@@ -19,7 +19,7 @@ let themeData = {
 };
 
 let staticData = {
-    canSave: storageAvailable("localStorage"),
+    canSave: checkStorage(),
     expenses: getSavedExpenses(),
 
     totalAmt() {
@@ -53,27 +53,33 @@ let staticData = {
     },
 
     delExpense() {
-        this.expenses.forEach((expense) => {
-            if (expense.del) {
-                this.expenses.splice(this.expenses.indexOf(expense), 1);
-            }
-        });
+        this.expenses = this.expenses.filter((expense) => !expense.del);
 
         // update in localStorage
         saveIfPossible(this.canSave, "expenses", this.expenses);
     },
 };
 
-function saveIfPossible(canSave, key, value) {
-    if (canSave) {
+function saveIfPossible(isPossible, key, value) {
+    if (isPossible) {
         localStorage.setItem(key, JSON.stringify(value));
     }
 }
 
-function storageAvailable(type) {
+function getSavedExpenses() {
+    if (checkStorage()) {
+        let expenses = localStorage.getItem("expenses");
+        if (expenses !== null) {
+            return JSON.parse(expenses);
+        }
+    }
+    return [];
+}
+
+function checkStorage() {
     let storage;
     try {
-        storage = window[type];
+        storage = window.localStorage;
         const x = "__storage_test__";
         storage.setItem(x, x);
         storage.removeItem(x);
@@ -87,14 +93,4 @@ function storageAvailable(type) {
             storage.length !== 0
         );
     }
-}
-
-function getSavedExpenses() {
-    if (storageAvailable("localStorage")) {
-        let expenses = localStorage.getItem("expenses");
-        if (expenses !== null) {
-            return JSON.parse(expenses);
-        }
-    }
-    return [];
 }
