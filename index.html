@@ -19,21 +19,14 @@
 
         <title>X-pense - Monthly Expense Calculator</title>
 
-        <script
-            defer
-            src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-        ></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="./assets/script.js"></script>
     </head>
     <body x-data="themeData" :class="theme">
         <header>
             <nav>
                 <a href="https://xpense.cybar.dev/">
-                    <img
-                        :src="logoSrc"
-                        alt="small X-pense logo"
-                        height="48px"
-                    />
+                    <img :src="logoSrc" alt="small X-pense logo" height="48px" />
                 </a>
                 <ul>
                     <li>
@@ -45,9 +38,7 @@
                         ></a>
                     </li>
                     <li>
-                        <a
-                            href="https://github.com/cybardev/xpense/"
-                            target="_blank"
+                        <a href="https://github.com/cybardev/xpense/" target="_blank"
                             >GitHub &nearr;</a
                         >
                     </li>
@@ -59,14 +50,6 @@
         <hr />
         <main x-data="staticData">
             <div>
-                <section class="flex sp-b">
-                    <button @click="addExpense" id="addBtn">Add</button>
-                    <h2 id="sumAmt">
-                        Total Monthly Expense:
-                        <span x-text="totalAmt"></span>
-                    </h2>
-                    <button @click="delExpense" id="delBtn">Remove</button>
-                </section>
                 <section class="flex sp-b m-v">
                     <span class="flex sp-a">
                         <label for="new-item">Expense:</label>
@@ -96,6 +79,14 @@
                             placeholder="0.00"
                     /></span>
                 </section>
+                <section class="flex sp-b">
+                    <button @click="addExpense" id="addBtn">Add</button>
+                    <h2 id="sumAmt">
+                        Total Monthly Expense:
+                        <span x-text="totalAmt"></span>
+                    </h2>
+                    <button @click="delExpense" id="delBtn">Remove</button>
+                </section>
             </div>
             <br />
             <section class="m-v">
@@ -111,16 +102,11 @@
                     </thead>
                     <tbody id="expense-list">
                         <template x-for="expense in expenses">
-                            <tr
-                                x-id="['expenseRow', 'expenseChk']"
-                                :id="$id('expenseRow')"
-                            >
+                            <tr x-id="['expenseRow', 'expenseChk']" :id="$id('expenseRow')">
                                 <td x-text="expense.item"></td>
                                 <td x-text="expense.amt"></td>
                                 <td x-text="'$' + expense.cost.toFixed(2)"></td>
-                                <td
-                                    x-text="'$' + (expense.amt * expense.cost).toFixed(2)"
-                                ></td>
+                                <td x-text="'$' + (expense.amt * expense.cost).toFixed(2)"></td>
                                 <td>
                                     <input
                                         type="checkbox"
@@ -139,9 +125,7 @@
         <footer>
             <p>
                 Made by
-                <a href="https://github.com/cybardev/" target="_blank"
-                    >Sheikh &nearr;</a
-                ><br />
+                <a href="https://github.com/cybardev/" target="_blank">Sheikh &nearr;</a><br />
             </p>
         </footer>
     </body>

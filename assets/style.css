@@ -76,14 +76,14 @@ td {
 
 @media screen and (max-width: 768px) {
     #sumAmt {
-        order: 1;
+        order: 3;
     }
 
     #addBtn {
-        order: 2;
+        order: 1;
     }
 
     #delBtn {
-        order: 3;
+        order: 2;
     }
 }
