@@ -19,7 +19,8 @@ let themeData = {
 };
 
 let staticData = {
-    expenses: [],
+    canSave: storageAvailable("localStorage"),
+    expenses: getSavedExpenses(),
 
     totalAmt() {
         let amt = 0.0;
@@ -46,6 +47,9 @@ let staticData = {
             amount.value = "";
             unit_cost.value = "";
         }
+
+        // save to localStorage
+        saveIfPossible(this.canSave, "expenses", this.expenses);
     },
 
     delExpense() {
@@ -54,5 +58,43 @@ let staticData = {
                 this.expenses.splice(this.expenses.indexOf(expense), 1);
             }
         });
+
+        // update in localStorage
+        saveIfPossible(this.canSave, "expenses", this.expenses);
     },
 };
+
+function saveIfPossible(canSave, key, value) {
+    if (canSave) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+}
+
+function storageAvailable(type) {
+    let storage;
+    try {
+        storage = window[type];
+        const x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return (
+            e instanceof DOMException &&
+            e.name === "QuotaExceededError" &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage &&
+            storage.length !== 0
+        );
+    }
+}
+
+function getSavedExpenses() {
+    if (storageAvailable("localStorage")) {
+        let expenses = localStorage.getItem("expenses");
+        if (expenses !== null) {
+            return JSON.parse(expenses);
+        }
+    }
+    return [];
+}
